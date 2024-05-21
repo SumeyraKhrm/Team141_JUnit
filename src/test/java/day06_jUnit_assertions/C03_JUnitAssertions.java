@@ -10,10 +10,23 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 import java.util.List;
 
-//bu sekılde solda 2 tik ve bir carpı var
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class C02_JUnitOtomatikRaporlama {
+public class C03_JUnitAssertions {
+
+    /*
+      JUNit assertions calistiginda failed olursa
+      kod'un hata verdigi yeri daha kolay bulabilmemiz icin
+      JUnit altini TURUNCU NOKTALAR ile isaretler
+
+      turuncu noktalar KIRMIZI ALT CIZGI (CTE) degildir
+      testin nerede hata verdigini bize gosteren gecici isaretlerdir
+      testi PASSED oldugunda bu turuncu noktalar kaybolur
+
+      EGER failed oldugunda konsolda bir aciklama yazmasini istersek
+      assertion'da message ekleyebiliriz
+   */
+
 
     static WebDriver driver;
     static List<WebElement> bulunanSonucElementleriList;
@@ -31,24 +44,20 @@ public class C02_JUnitOtomatikRaporlama {
         driver.quit();
     }
 
-    @Test
-    @Order(1)
+    @Test @Order(1)
     public void anasayfaTesti() throws InterruptedException {
         // 1- testotomasyonu anasayfaya gidin ve anasayfaya gittiginizi test edin
         // testotomasyonu anasayfaya gidin
         driver.get("https://www.testotomasyonu.com");
         // testotomasyonu sayfasina gittiginizi test edin
 
-        String expectedUrlIcerik = "testotomasyonuQQ";
+        String expectedUrlIcerik = "testotomasyonu";
         String actualUrl = driver.getCurrentUrl();
 
+        // actual url'in expectedUrlIcerik icerdigini test edin
+        Assertions.assertTrue(actualUrl.contains(expectedUrlIcerik),"Url istenen icerigi barindirmiyor");
 
-        if (actualUrl.contains(expectedUrlIcerik)){
-            System.out.println("Test otomasyonu testi PASSED");
-        } else {
-            System.out.println("Test otomasyonu testi FAILED");
-            throw new AssertionError();
-        }
+
         Thread.sleep(2000);
     }
 
@@ -63,15 +72,12 @@ public class C02_JUnitOtomatikRaporlama {
         bulunanSonucElementleriList =
                 driver.findElements(By.xpath("//*[@*='prod-img']"));
 
-        if (bulunanSonucElementleriList.size()>0){
-            System.out.println("phone arama testi PASSED");
-        }else {
-            System.out.println("phone arama testi FAILED");
-            throw new AssertionError();
-        }
+        // listenin size'inin 0'dan buyuk oldugunu test edin
+
+        Assertions.assertTrue(bulunanSonucElementleriList.size()>0, "listenin size'i 0'dan buyuk degil");
+
         Thread.sleep(2000);
     }
-
 
     @Test @Order(3)
     public void ilkUrunIsimTesti() throws InterruptedException {
@@ -87,16 +93,17 @@ public class C02_JUnitOtomatikRaporlama {
                 .getText()
                 .toLowerCase();
 
-        if (actualUrunIsmi.contains(expectedUrunIsimIcerigi)){
-            System.out.println("Urun isim testi PASSED");
-        }else {
+        // urun isminin case sensitive olmadan phone icerdigini test edin
 
-            System.out.println("Urun isim testi FAILED");
-            throw new AssertionError();
-        }
+        Assertions.assertTrue(actualUrunIsmi.contains(expectedUrunIsimIcerigi),"urun ismi case sensitive olmadan phone icermiyor");
+
         Thread.sleep(2000);
     }
 
+
+
+
 }
+
 
 
