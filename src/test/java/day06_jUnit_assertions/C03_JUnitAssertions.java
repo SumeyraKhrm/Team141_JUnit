@@ -25,6 +25,9 @@ public class C03_JUnitAssertions {
 
       EGER failed oldugunda konsolda bir aciklama yazmasini istersek
       assertion'da message ekleyebiliriz
+
+      Assertions.assertTrue ya da False içerirmi sorularıyla aynı mantık
+      eşitlik varsa equals olanları kullanıcaz
    */
 
 
@@ -51,12 +54,13 @@ public class C03_JUnitAssertions {
         driver.get("https://www.testotomasyonu.com");
         // testotomasyonu sayfasina gittiginizi test edin
 
-        String expectedUrlIcerik = "testotomasyonu";
+        String expectedUrlIcerik = "testotomasyonuT";
         String actualUrl = driver.getCurrentUrl();
 
         // actual url'in expectedUrlIcerik icerdigini test edin
         Assertions.assertTrue(actualUrl.contains(expectedUrlIcerik),"Url istenen icerigi barindirmiyor");
 
+        //sadece faileed olma durumunda mesaj gosterıyor
 
         Thread.sleep(2000);
     }
@@ -101,8 +105,7 @@ public class C03_JUnitAssertions {
     }
 
 
-
-
+    
 }
 
 
