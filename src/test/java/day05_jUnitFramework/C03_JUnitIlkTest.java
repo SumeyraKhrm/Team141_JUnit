@@ -14,11 +14,10 @@ public class C03_JUnitIlkTest {
 
         - JUnit bir class'da birden fazla test method'u oldugunda
           hangisinin once calistirilacagina kendisi karar verir
-          biz bu konuda bir ongoruye sahip olamayiz
-          ve siralamayi belirleyemeyiz
+          biz bu konuda bir ongoruye sahip olamayiz !! ve siralamayi belirleyemeyiz
           (eger method isimleri test01, test02,test03... gibi yazilirsa, bu siralamaya uyar)
 
-          ikinci bir yol olarak
+        - ikinci bir yol olarak
           class deklarasyonunun ustunde : @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
           her @Test method'unda ise @Order(1) kullanarak
           istedigimiz siralamada calistirabiliriz
@@ -75,7 +74,7 @@ public class C03_JUnitIlkTest {
 
 
     @Test
-    public void toTest03() throws InterruptedException {
+    public void test03() throws InterruptedException {
 
         // ayarlari yapin
         WebDriver driver = new ChromeDriver();
