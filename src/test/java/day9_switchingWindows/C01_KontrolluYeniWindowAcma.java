@@ -122,15 +122,6 @@ public class C01_KontrolluYeniWindowAcma extends TestBase {
 
 
 
-
-
-
-
-
-
-
-
-
     }
 
 
