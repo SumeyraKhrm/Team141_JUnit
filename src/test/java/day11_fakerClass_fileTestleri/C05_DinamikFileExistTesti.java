@@ -27,8 +27,9 @@ public class C05_DinamikFileExistTesti extends TestBase {
         // Tum bilgisayarlarda tanimli bir anaDosyaYolu vardir
         // Java bu temel dosya yolunu bize veren bir koda sahiptir
 
-        System.out.println(System.getProperty("user.home"));  // /Users/erolkahraman
+        //bu sekılde dinamik hale gelir ve herkes ıcın calısır
 
+        System.out.println(System.getProperty("user.home"));  // /Users/erolkahraman
         dosyaYolu =System.getProperty("user.home") + "/Downloads/selenium-snapshot.png";
 
         Assertions.assertTrue(Files.exists(Paths.get(dosyaYolu)));
