@@ -42,10 +42,15 @@ public class C05_JavascriptExecutor extends TestBase {
 
         WebElement whyChooseUsLinki = driver.findElement(By.xpath("//*[text()='Why '] "));
 
+
         JavascriptExecutor jse = (JavascriptExecutor) driver ;
         jse.executeScript("arguments[0].scrollIntoView({block: 'center'}); ",whyChooseUsLinki);
         //bunun avantajı actionla locater edemediklerimize kadar da iniyor !!!
         //görmediğimiz bir elemente de click yapıyor
+
+
+        //sayfayı istenilen web elemente göre kaydırır !
+        //jse.executeScript("arguments[0].scrollIntoView();", whyChooseUsLinki);
 
 
         ReusableMethods.bekle(2);
